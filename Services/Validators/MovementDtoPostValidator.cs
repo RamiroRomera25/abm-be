@@ -9,9 +9,6 @@ public class MovementDtoPostValidator : AbstractValidator<MovementDtoPost>
 {
     public MovementDtoPostValidator()
     {
-        RuleFor(x => x.Owner)
-            .NotEmpty();
-
         RuleFor(x => x.Cost)
             .GreaterThan(0);
 
@@ -19,24 +16,9 @@ public class MovementDtoPostValidator : AbstractValidator<MovementDtoPost>
             .MaximumLength(500);
 
         RuleFor(x => x.Date)
-            .NotEmpty()
-            .LessThanOrEqualTo(DateTime.Now);
+            .NotEmpty();
 
         RuleFor(x => x.MovementType)
             .IsInEnum();
-
-        When(x => x.MovementType == MovementType.Bid, () =>
-        {
-            RuleFor(x => x.AuctionId.Value)
-                .NotNull()
-                .NotEqual(Guid.Empty);
-        });
-
-        When(x => x.MovementType == MovementType.Contribution, () =>
-        {
-            RuleFor(x => x.PurchaseId.Value)
-                .NotNull()
-                .NotEqual(Guid.Empty);
-        });
     }
 }

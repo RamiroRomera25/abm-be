@@ -4,8 +4,6 @@ namespace technical_tests_backend_ssr.Dtos;
 
 public class MovementDtoPost
 {
-    public string Owner { get; set; }
-    
     public Double Cost { get; set; }
     
     public string Comments { get; set; }

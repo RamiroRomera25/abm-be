@@ -23,9 +23,9 @@ public class AuctionController : ControllerBase
     }
    
     [HttpGet("")]
-    public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
+    public async Task<IActionResult> GetAll([FromQuery] int page, [FromQuery] int size)
     {
-        var response = await _auctionService.GetAll(pageNumber, pageSize);
+        var response = await _auctionService.GetAll(page, size);
         return Ok(response);
     }
     

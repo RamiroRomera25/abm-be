@@ -35,16 +35,13 @@ public class MovementContributionHandler : IMovementStrategy
     
     private void Validate(Purchase purchase, MovementDtoPost dtoPost)
     {
-        if (purchase.MoneyCollected >= dtoPost.Cost) {
-            throw new BadHttpRequestException("The bid do not equal the highest bid.");
-        }
         if (purchase.MoneyCollected >= purchase.TargetPrice) {
             throw new BadHttpRequestException("The purchase has already completed.");
         }
         var now = DateTime.Now;
-        if (purchase.StartDate < now || purchase.EndDate > now)
+        if (now < purchase.StartDate || now > purchase.EndDate)
         {
-            throw new BadHttpRequestException("The auction is outdated.");
+            throw new BadHttpRequestException("The purchase is outdated.");
         }
         if (!purchase.IsActive) {
             throw new BadHttpRequestException("The purchase is deleted.");

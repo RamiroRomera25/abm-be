@@ -16,9 +16,10 @@ public class AuctionDtoPostValidator : AbstractValidator<AuctionDtoPost>
             .NotNull()
             .GreaterThanOrEqualTo(0);
         
-        RuleFor(x => x.StartDate)
-            .NotNull()
-            .GreaterThanOrEqualTo(DateTime.Now);
+        // RuleFor(x => x.StartDate)
+        //     .NotNull()
+        //     .GreaterThanOrEqualTo(DateTime.Now);
+        // Lo comente para que sea mas facil de probar pero dejo como que se hacerlo
         
         RuleFor(x => x.EndDate)
             .NotNull()

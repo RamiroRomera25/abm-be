@@ -39,8 +39,6 @@ public class MovementBidHandler :  IMovementStrategy
             throw new BadHttpRequestException("The bid do not equal the highest bid.");
         }
         var now = DateTime.Now;
-        bool asd = now < auction.StartDate;
-        bool dsa = now > auction.EndDate;
         if (now < auction.StartDate || now > auction.EndDate)
         {
             throw new BadHttpRequestException("The auction is outdated.");

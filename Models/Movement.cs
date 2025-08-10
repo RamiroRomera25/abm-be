@@ -7,8 +7,6 @@ public class Movement
 {
     public Guid MovementId { get; set; }
     
-    public string Owner { get; set; }
-    
     public Double Cost { get; set; }
     
     public string Comments { get; set; }

@@ -40,6 +40,7 @@ public class PurchaseService : IPurchaseService
 
         List<Purchase> entities = await _purchaseRepository
             .GetAll()
+            .Where(p => p.IsActive)
             .Skip(skip)
             .Take(pageSize)
             .ToListAsync();
@@ -96,7 +97,7 @@ public class PurchaseService : IPurchaseService
     private async Task<PurchaseDto> PerformIsActive(Guid id, bool isActive)
     {
         Purchase entity = await _purchaseRepository.GetById(id);
-        entity.IsActive = false;
-        return _mapper.Map<PurchaseDto>(_purchaseRepository.Update(entity));
+        entity.IsActive = isActive;
+        return _mapper.Map<PurchaseDto>(await _purchaseRepository.Update(entity));
     }
 }

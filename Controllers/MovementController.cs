@@ -14,18 +14,11 @@ public class MovementController : ControllerBase
     {
         _movementService = movementService;
     }
-    
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute]Guid id)
-    {
-        var response = await _movementService.GetById(id);
-        return Ok(response);
-    }
    
     [HttpGet("")]
-    public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
+    public async Task<IActionResult> GetAll([FromQuery] int page, [FromQuery] int size)
     {
-        var response = await _movementService.GetAll(pageNumber, pageSize);
+        var response = await _movementService.GetAll(page, size);
         return Ok(response);
     }
     

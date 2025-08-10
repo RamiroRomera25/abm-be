@@ -39,6 +39,7 @@ public class AuctionService : IAuctionService
 
         List<Auction> entities = await _auctionRepository
             .GetAll()
+            .Where(a => a.IsActive)
             .Skip(skip)
             .Take(pageSize)
             .ToListAsync();
@@ -89,7 +90,7 @@ public class AuctionService : IAuctionService
     private async Task<AuctionDto> PerformIsActive(Guid id, bool isActive)
     {
         Auction entity = await _auctionRepository.GetById(id);
-        entity.IsActive = false;
-        return _mapper.Map<AuctionDto>(_auctionRepository.Update(entity));
+        entity.IsActive = isActive;
+        return _mapper.Map<AuctionDto>(await _auctionRepository.Update(entity));
     }
 }

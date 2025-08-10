@@ -60,6 +60,7 @@ public class MovementService : IMovementService
     public async Task<MovementDto> Register(MovementDtoPost request)
     {
         Movement entity = await _movementFactoryHandler.GetHandler(request.MovementType).CreateMovement(request);
+        entity.IsActive = true;
         return _mapper.Map<MovementDto>(await _movementRepository.Register(entity));
     }
 
