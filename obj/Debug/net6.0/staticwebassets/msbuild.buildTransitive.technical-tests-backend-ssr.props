@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\technical-tests-backend-ssr.props" />
+</Project>

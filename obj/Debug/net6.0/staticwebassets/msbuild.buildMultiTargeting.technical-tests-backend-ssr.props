@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\technical-tests-backend-ssr.props" />
+</Project>

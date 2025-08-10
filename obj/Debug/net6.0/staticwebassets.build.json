@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ejCZMGbPIs2Euhm3wmLmn7T58I9P2pHr0njV0nCPlrY=",
+  "Source": "technical-tests-backend-ssr",
+  "BasePath": "_content/technical-tests-backend-ssr",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

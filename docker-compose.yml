@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:9.0
+    environment:
+      MYSQL_DATABASE: prueba-be
+      MYSQL_USER: rami
+      MYSQL_PASSWORD: rami
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 25
+
+
+volumes:
+  mysql_data:
