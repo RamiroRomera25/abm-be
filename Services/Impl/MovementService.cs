@@ -43,6 +43,7 @@ public class MovementService : IMovementService
             .GetAll()
             .Skip(skip)
             .Take(pageSize)
+            .OrderByDescending(m => m.Date)
             .ToListAsync();
 
         List<MovementDto> dtos = _mapper.Map<List<MovementDto>>(entities);

@@ -89,6 +89,8 @@ public class PurchaseService : IPurchaseService
         if (purchase.MoneyCollected >= purchase.TargetPrice)
         {
             purchase.Stock--;
+            purchase.MoneyCollected = 0;
+            purchase.IsActive = true;
         }
         
         await _purchaseRepository.Update(purchase);

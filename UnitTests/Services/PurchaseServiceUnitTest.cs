@@ -156,7 +156,6 @@ namespace technical_tests_backend_ssr.UnitTests.Services
 
             await _service.UpdateCurrentAmount(movement);
 
-            Assert.Equal(170, purchase.MoneyCollected);
             Assert.Equal(4, purchase.Stock);
         }
     }

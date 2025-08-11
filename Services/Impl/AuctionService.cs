@@ -67,6 +67,7 @@ public class AuctionService : IAuctionService
     public async Task<AuctionDto> Update(AuctionDtoPut request)
     {
         Auction entity = _mapper.Map<Auction>(request);
+        entity.IsActive = true;
         return _mapper.Map<AuctionDto>(await _auctionRepository.Update(entity));
     }
 

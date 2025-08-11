@@ -9,14 +9,21 @@ public class AutoMapperConfig : Profile
     public AutoMapperConfig()
     {
         CreateMap<Auction, AuctionDto>().ReverseMap();
-        CreateMap<AuctionDtoPost, Auction>();
-        CreateMap<AuctionDtoPut, Auction>();
+        CreateMap<AuctionDtoPost, Auction>()
+            .ForMember(dest => dest.IsActive, opt => opt.Ignore())
+            .ForMember(dest => dest.IsOpen, opt => opt.Ignore());
+        CreateMap<AuctionDtoPut, Auction>()
+            .ForMember(dest => dest.IsActive, opt => opt.Ignore())
+            .ForMember(dest => dest.IsOpen, opt => opt.Ignore());
         
         CreateMap<Purchase, PurchaseDto>().ReverseMap();
-        CreateMap<PurchaseDtoPost, Purchase>();
-        CreateMap<PurchaseDtoPut, Purchase>();
+        CreateMap<PurchaseDtoPost, Purchase>()
+            .ForMember(dest => dest.IsActive, opt => opt.Ignore());
+        CreateMap<PurchaseDtoPut, Purchase>()
+            .ForMember(dest => dest.IsActive, opt => opt.Ignore());
         
         CreateMap<Movement, MovementDto>().ReverseMap();
-        CreateMap<MovementDtoPost, Movement>();
+        CreateMap<MovementDtoPost, Movement>()
+            .ForMember(dest => dest.IsActive, opt => opt.Ignore());
     }
 }

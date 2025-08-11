@@ -11,7 +11,7 @@ public class AuctionRepositoryUnitTest
     private TechnicalTestDbContext CreateContext()
     {
         var options = new DbContextOptionsBuilder<TechnicalTestDbContext>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString()) // Base de datos aislada por test
+            .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
 
         return new TechnicalTestDbContext(options);
